@@ -3,6 +3,7 @@
 This is the code repository for [Prompt Engineering In Action](https://www.manning.com/books/prompt-engineering-in-action), published by Manning
 
 # What is this book about?
+Prompt Engineering in Action teaches you practical prompt engineering skills including:
 
 This book covers the following topics:
   - Designing context-aware prompts tailored for specific tasks
@@ -11,6 +12,8 @@ This book covers the following topics:
   - Utilizing templates to ensure consistent and reusable outputs
   - Integrating external knowledge bases with Retrieval-Augmented Generation (RAG)
   - Building and deploying practical LLM-based apps using LangChain
+
+Prompt Engineering in Action presents patterns, templates, and techniques that help you get consistent, valuable responses from LLMs. You’ll learn how to design precise and context-aware prompts, discover metrics you can use to assess prompt quality, learn methods to scale and collaborate on prompts, and build advanced and agentic AI apps using LangChain.
 
 # Get to know the Author's
 
