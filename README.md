@@ -85,7 +85,7 @@ To run the code in this repository, you can use the following steps
 > 5. Please rename the example.env file to `.env` in the `src\Chapter04` directory. This file contains the OpenAI API key and other environment variables required to run the code.
 >    - You can set the OpenAI API key in the `.env` file as follows:
 > 6. Run the code cells in the notebook.
-> 7. You can run the code cells by clicking on the "Run" button in the top menu or by using the keyboard shortcut `Shift + Enter`.
+> 7. You can run the code cells by clicking on the `Run All` button in the top menu or by using the keyboard shortcut `Shift + Enter`.
 
 ```text
 OPENAI_API_KEY=your_openai_api_key_here
