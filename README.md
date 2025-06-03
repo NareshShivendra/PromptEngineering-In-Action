@@ -60,6 +60,7 @@ pip install LangChain
 pip install langchain-openai
 pip install langchain-community
 pip install langchain_experimental
+pip install ipykernel
 python.exe -m pip install --upgrade pip # Install the latest version of pip if needed
 ```
 
