@@ -62,6 +62,7 @@ pip install langchain-community
 pip install langchain_experimental
 pip install ipykernel
 pip install pandas
+pip install tabulate
 python.exe -m pip install --upgrade pip # Install the latest version of pip if needed
 ```
 
