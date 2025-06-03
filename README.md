@@ -63,11 +63,15 @@ pip install langchain_experimental
 python.exe -m pip install --upgrade pip
 ```
 
+!![Installing Dependencies](./docs/images/Install_Dependencies_pip.PNG)
+
 ## If you have a `requirements.txt` file, you can install all the dependencies listed in it by running
 
 ```powershell
 pip install -r requirements.txt
 ```
+
+![Installing Requirements](./docs/images/Install_Dependencies_requirements_txt.PNG)
 
 ## Contributing
 
