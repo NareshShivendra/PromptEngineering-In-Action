@@ -35,7 +35,7 @@ Shivendra is an Engineering Manager at AWS, where he focuses on building highly 
 
 To create a new virtual environment, you can use the following command:
 
-### For Windows PowerShells
+### For Windows PowerShell
 
 ```powershell
 python --version
