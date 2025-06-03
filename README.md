@@ -26,3 +26,47 @@ Naresh is an Information Systems Associate Director at Amgen, where he focuses o
 **Shivendra Srivastava** has more than a decade of experience working in the field of Cloud/Distributed Computing, Machine Learning and Artificial Intelligence. Shivendra is an experienced engineer and engineering manager who has worked across various industries such as Retail, Pharmacy and more recently in Cloud Computing companies. He holds a Master’s degree in computer science from Georgia Institute of Technology.
 
 Shivendra is an Engineering Manager at AWS, where he focuses on building highly available, low latency and scalable serverless solutions that power AWS Lambda, Athena, Glue and Bedrock. You can learn more about Shivendra at [LinkedIn](https://www.linkedin.com/in/shivendrasrivastava).
+
+## References
+
+- [LangChain](https://www.langchain.com/)
+
+## Creating a new Virtual Environment
+
+To create a new virtual environment, you can use the following command:
+
+```powershell
+# For Windows PowerShells
+python --version
+
+pip install virtualenv
+python.exe -m pip install --upgrade pip
+
+python -m venv .venv
+.\.venv\Scripts\activate
+python.exe -m pip install --upgrade pip
+```
+
+## Installing Dependencies
+
+To install the dependencies for this project, you can use the following command:
+
+```powershell
+# For Windows PowerShells
+pip install LangChain
+pip install langchain-openai
+pip install langchain-community
+pip install langchain_experimental
+```
+
+```powershell
+pip install -r requirements.txt
+```
+
+## Contributing
+
+We welcome contributions to this repository. If you have suggestions, bug reports, or improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
