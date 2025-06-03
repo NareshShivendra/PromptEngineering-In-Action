@@ -84,6 +84,7 @@ To run the code in this repository, you can use the following steps
 > 1. Select the Python interpreter that corresponds to your virtual environment.
 > 1. Please rename the example.env file to `.env` in the `src\Chapter04` directory. This file contains the OpenAI API key and other environment variables required to run the code.
 >    - You can set the OpenAI API key in the `.env` file as follows:
+> 1. You can also set the OpenAI API key in the environment variables of your operating system.
 > 1. Run the code cells in the notebook.
 > 1. You can run the code cells by clicking on the `Run All` button in the top menu or by using the keyboard shortcut `Shift + Enter`.
 
