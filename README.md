@@ -41,11 +41,11 @@ To create a new virtual environment, you can use the following command:
 python --version
 
 pip install virtualenv
-python.exe -m pip install --upgrade pip
+python.exe -m pip install --upgrade pip # Install the latest version of pip if needed
 
 python -m venv .venv
 .\.venv\Scripts\activate
-python.exe -m pip install --upgrade pip
+python.exe -m pip install --upgrade pip # Install the latest version of pip if needed
 ```
 
 ![Creating Virtual Environment](./docs/images/CreatingVirtualEnvironment.PNG)
@@ -60,7 +60,7 @@ pip install LangChain
 pip install langchain-openai
 pip install langchain-community
 pip install langchain_experimental
-python.exe -m pip install --upgrade pip
+python.exe -m pip install --upgrade pip # Install the latest version of pip if needed
 ```
 
 !![Installing Dependencies](./docs/images/Install_Dependencies_pip.PNG)
