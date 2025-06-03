@@ -73,6 +73,29 @@ pip install -r requirements.txt
 
 ![Installing Requirements](./docs/images/Install_Dependencies_requirements_txt.PNG)
 
+## Running the Code
+
+To run the code in this repository, you can use the following steps
+
+> 1. Open the code in VS Code.
+> 2. Make sure your virtual environment is activated.
+> 3. Open any of the notebook. In our example, we will open `src\Chapter04\1_Zero-Shot.ipynb`.
+> 4. Select the Python interpreter that corresponds to your virtual environment.
+> 5. Please rename the example.env file to `.env` in the `src\Chapter04` directory. This file contains the OpenAI API key and other environment variables required to run the code.
+>    - You can set the OpenAI API key in the `.env` file as follows:
+> 6. Run the code cells in the notebook.
+> 7. You can run the code cells by clicking on the "Run" button in the top menu or by using the keyboard shortcut `Shift + Enter`.
+
+```text
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+![Selecting the Python Interpreter](./docs/images/Selecting_Python_Env_1.PNG)
+
+![Selecting the Python Interpreter](./docs/images/Selecting_Python_Env_2.PNG)
+
+![Running the Code](./docs/images/Execute_The_Notebook.PNG)
+
 ## Contributing
 
 We welcome contributions to this repository. If you have suggestions, bug reports, or improvements, please open an issue or submit a pull request.
