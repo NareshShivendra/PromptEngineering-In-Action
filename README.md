@@ -35,8 +35,9 @@ Shivendra is an Engineering Manager at AWS, where he focuses on building highly 
 
 To create a new virtual environment, you can use the following command:
 
+### For Windows PowerShells
+
 ```powershell
-# For Windows PowerShells
 python --version
 
 pip install virtualenv
@@ -46,6 +47,8 @@ python -m venv .venv
 .\.venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 ```
+
+![Creating Virtual Environment](./docs/images/CreatingVirtualEnvironment.PNG)
 
 ## Installing Dependencies
 
@@ -57,7 +60,10 @@ pip install LangChain
 pip install langchain-openai
 pip install langchain-community
 pip install langchain_experimental
+python.exe -m pip install --upgrade pip
 ```
+
+## If you have a `requirements.txt` file, you can install all the dependencies listed in it by running
 
 ```powershell
 pip install -r requirements.txt
