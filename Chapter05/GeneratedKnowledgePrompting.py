@@ -1,71 +1,68 @@
-from langchain import PromptTemplate, LLMChain
-from langchain_openai import ChatOpenAI
-from typing import List, Dict
 import os
+import openai
+from collections import Counter
 
-# setting the openai api key as environment variable
-os.environ['OPENAI_API_KEY']= "<OpenAI API Key>>" # replace with your openai api key
-# Initialize the OpenAI LLM
-llm = ChatOpenAI(temperature=0, model_name="gpt-4o", openai_api_key=os.environ['OPENAI_API_KEY'])
+# 1. Configure your API key
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
-# Step 1: Basic Patient Input Prompt
-patient_input = {
+# 2. Patient data and knowledge prompts
+patient = {
     "age": 55,
     "gender": "male",
     "history": "high blood pressure",
     "symptoms": ["shortness of breath", "chest pain", "fatigue", "irregular heartbeat"]
 }
 
-# Step 2: Generated Knowledge Prompts
-knowledge_prompt_1 = """
-General medical knowledge related to the symptoms listed for the patient. In patients experiencing shortness of breath, chest pain, and a history of high blood pressure, possible cardiovascular conditions include angina, heart failure, or arrhythmia.
+knowledge_1 = """
+General medical knowledge related to the symptoms: in patients with shortness of breath,
+chest pain, and hypertension, consider angina, heart failure, or arrhythmia.
 """
-knowledge_prompt_2 = """
-General knowledge for patients over 50 years with these symptoms should also be evaluated for risks related to coronary artery disease and hypertensive heart disease.
+knowledge_2 = """
+For patients over 50 with these findings, also evaluate risks of coronary artery
+disease and hypertensive heart disease.
 """
-# Combine all data into the final prompt
-final_prompt_template = """
-A {age}-year-old {gender} with a history of {history} is experiencing {symptoms}.
-Considering cardiovascular conditions like angina, arrhythmia, heart failure, coronary artery disease, or hypertensive heart disease, what are the most likely diagnoses? 
-Please provide multiple diagnoses with confidence scores for each.
-"""
-# Prepare the prompt template
-prompt_template = PromptTemplate(input_variables=["age", "gender", "history", "symptoms"], template=final_prompt_template)
-# Create the LLM chain
-llm_chain = LLMChain(llm=llm, prompt=prompt_template)
 
-# Step 3: Run the prompt through the LLM
-prompt_input = {
-    "age": patient_input["age"],
-    "gender": patient_input["gender"],
-    "history": patient_input["history"],
-    "symptoms": ", ".join(patient_input["symptoms"])
-}
-# Get the diagnosis predictions with confidence scores
-response = llm_chain.run(prompt_input)
-#print(response)
+# 3. Build the combined prompt
+final_prompt = f"""
+A {patient['age']}-year-old {patient['gender']} with a history of {patient['history']} is
+experiencing {', '.join(patient['symptoms'])}.
 
-#Step 4: Parse the model's response to extract diagnoses and confidence scores
-def parse_diagnoses(response_text: str):
+{knowledge_1}
+{knowledge_2}
+
+Question: Considering cardiovascular conditions like angina, arrhythmia, heart failure,
+coronary artery disease, and hypertensive heart disease, what are the most likely
+diagnoses? Please list each with a confidence score (e.g., "Angina – Confidence: 0.85").
+"""
+
+# 4. Send to the Chat Completion endpoint
+resp = openai.chat.completions.create(
+    model="gpt-4o",
+    temperature=0,
+    messages=[
+        {"role": "system", "content": "You are a knowledgeable medical assistant."},
+        {"role": "user",   "content": final_prompt}
+    ]
+)
+
+raw = resp.choices[0].message.content.strip()
+print("Model response:\n", raw)
+
+# 5. Parse diagnoses and scores
+def parse_diagnoses(text):
     diagnoses = []
-    lines = response_text.strip().split('\n')
-    for line in lines:
-        parts = line.split(" - Confidence Score: ")
-        print(parts)
-        if len(parts) == 2:
-            diagnosis = parts[0].strip()
-            confidence = parts[1]
-            diagnoses.append({"diagnosis": diagnosis, "confidence": confidence})
+    for line in text.splitlines():
+        if "– Confidence:" in line:
+            diag, score = line.split("– Confidence:")
+            diagnoses.append({
+                "diagnosis": diag.strip(),
+                "confidence": float(score.strip())
+            })
     return diagnoses
 
-# Extract diagnoses from the LLM's response
-diagnoses_with_confidence = parse_diagnoses(response)
-print(diagnoses_with_confidence)
+predictions = parse_diagnoses(raw)
 
-# Step 5: Select the highest confidence diagnosis
-def get_highest_confidence_diagnosis(predictions):
-    return max(predictions, key=lambda x: x['confidence'])
-best_diagnosis = get_highest_confidence_diagnosis(diagnoses_with_confidence)
-
-# Display the final result
-print(f"Highest confidence diagnosis: {best_diagnosis['diagnosis']} with confidence {best_diagnosis['confidence']}")
+# 6. Find the highest‐confidence diagnosis
+best = max(predictions, key=lambda x: x["confidence"])
+print("\nParsed predictions:", predictions)
+print(f"\nHighest‐confidence diagnosis: {best['diagnosis']} ({best['confidence']:.2f})")
